@@ -1,0 +1,5 @@
+//.gitignore file for koa.js
+node_modules
+npm-debug.log
+.idea
+.idea/*
