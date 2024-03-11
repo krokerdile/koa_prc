@@ -1,39 +1,16 @@
 const Koa = require('koa');
+const Router = require('koa-router');
+
 const app = new Koa();
+const router = new Router();
 
-app.use((ctx,next) => {
-    console.log(1);
-    next();
-})
-
-
-app.use((ctx,next)=> {
-    console.log(2);
-    next();
-})
-
-
-app.use((ctx,next) => {
-    ctx.body = 'Hello Koa';
-    next();
-})
-
-app.use((ctx, next) => { 
-    console.log(1);
-    const started = new Date();
-    next().then(() => {
-        const ms = new Date() - started;
-        console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-    });
-})
-
-app.use(async (ctx, next) => { 
-    console.log(1);
-    const started = new Date();
-    await next();
-    console.log(new Date() - started + 'ms');
+router.get('/', (ctx, next) => { 
+    ctx.body = 'Hello Koa 서버입니다.';
 });
 
-app.listen(4000, () => {
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+app.listen(4000, () => { 
     console.log('Listening to port 4000');
-})
+});
