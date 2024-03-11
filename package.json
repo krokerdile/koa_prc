@@ -5,6 +5,10 @@
   "repository": "https://github.com/krokerdile/koa_prc.git",
   "author": "hyunu0831 <hyunu.dev@gmail.com>",
   "license": "MIT",
+  "scripts":{
+    "start": "node src",
+    "start:dev": "nodemon --watch src/ src/index.js"
+  },
   "dependencies": {
     "koa": "^2.15.0"
   },
